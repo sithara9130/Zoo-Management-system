@@ -1,0 +1,192 @@
+================================================================================
+                    ZOO MANAGEMENT SYSTEM v1.0.0
+                      Complete Setup Instructions
+================================================================================
+
+📁 REQUIRED FILES (Total: 10 files)
+================================================================================
+
+1.  common.py                           ✅ (You already have this)
+2.  login_integrated.py                 📝 (Create this)
+3.  admin_dashboard_integrated.py       📝 (Create this)
+4.  staff_dashboard_integrated.py       📝 (Create this)
+5.  animal_records_integrated.py        📝 (Create this)
+6.  feeding_schedule_integrated.py      📝 (Create this)
+7.  health_updates_integrated.py        📝 (Create this)
+8.  enclosure_management_integrated.py  📝 (Create this)
+9.  staff_management_integrated.py      📝 (Create this)
+10. main.py                             📝 (Create this - This is the launcher!)
+
+BONUS: database_setup.sql               📝 (SQL file to create database)
+
+
+📋 STEP-BY-STEP SETUP GUIDE
+================================================================================
+
+STEP 1: Install Python Packages
+--------------------------------
+Open Command Prompt or Terminal and run:
+
+    pip install mysql-connector-python
+
+If you get an error, try:
+
+    python -m pip install mysql-connector-python
+
+
+STEP 2: Setup MySQL Database
+-----------------------------
+A. Open MySQL Workbench
+
+B. Connect to your local MySQL server
+
+C. Open the database_setup.sql file in MySQL Workbench
+
+D. Click the lightning bolt icon (⚡) to execute the script
+
+E. Verify success - you should see:
+   - "Database setup completed successfully!"
+   - "Default login: username=admin, password=admin123"
+
+
+STEP 3: Configure Database Connection
+--------------------------------------
+A. Open common.py file
+
+B. Find lines 20-23 (inside DatabaseConnection class):
+
+    self.host = 'localhost'
+    self.database = 'zoo_management'
+    self.user = 'root'              # ← CHANGE THIS
+    self.password = 'password' # ← CHANGE THIS
+
+C. Change 'root' to your MySQL username (usually stays 'root')
+
+D. Change 'password' to YOUR MySQL password
+
+
+STEP 4: Save All Python Files
+------------------------------
+Save all the Python files in the SAME FOLDER:
+
+    Your_Folder/
+    ├── common.py
+    ├── main.py
+    ├── login_integrated.py
+    ├── admin_dashboard_integrated.py
+    ├── staff_dashboard_integrated.py
+    ├── animal_records_integrated.py
+    ├── feeding_schedule_integrated.py
+    ├── health_updates_integrated.py
+    ├── enclosure_management_integrated.py
+    └── staff_management_integrated.py
+
+
+STEP 5: Run the Application
+----------------------------
+Option A - Using Command Prompt/Terminal:
+    1. Navigate to your folder:
+       cd path\to\your\folder
+
+    2. Run:
+       python main.py
+
+Option B - Using IDLE:
+    1. Open main.py in IDLE
+    2. Press F5 or click Run → Run Module
+
+Option C - Double click:
+    1. Right-click main.py → Open With → Python
+
+
+🔑 DEFAULT LOGIN CREDENTIALS
+================================================================================
+
+Administrator Account:
+    Username: admin
+    Password: admin123
+
+Staff Accounts (for testing):
+    Username: staff1
+    Password: staff123
+    
+    Username: staff2
+    Password: staff123
+
+
+✅ VERIFY YOUR SETUP
+================================================================================
+
+Check these after running main.py:
+
+1. ✓ You see "Zoo Management System v1.0.0" in console
+2. ✓ Login window appears
+3. ✓ You can login with admin/admin123
+4. ✓ Admin Dashboard opens with statistics
+5. ✓ You can click menu items to open other windows
+
+
+🐛 COMMON ERRORS & SOLUTIONS
+================================================================================
+
+ERROR: "ModuleNotFoundError: No module named 'mysql'"
+SOLUTION: Install the package
+    pip install mysql-connector-python
+
+ERROR: "Access denied for user 'root'@'localhost'"
+SOLUTION: Wrong password in common.py (line 23)
+    - Check your MySQL password
+    - Update self.password in common.py
+
+ERROR: "Unknown database 'zoo_management'"
+SOLUTION: Database not created
+    - Run database_setup.sql in MySQL Workbench first
+
+ERROR: "Can't connect to MySQL server"
+SOLUTION: MySQL is not running
+    - Open MySQL Workbench to start the server
+    - Or start MySQL service from Services (Windows)
+
+ERROR: "No module named 'login_integrated'"
+SOLUTION: Missing file
+    - Make sure all 10 Python files are in the same folder
+    - Check file names match exactly (case-sensitive!)
+
+ERROR: Last line in common.py causes error
+SOLUTION: Remove these lines from bottom of common.py:
+    if __name__ == "__main__":
+        root = tk.Tk()
+        app = ZooManagementSystem(root)
+        root.mainloop()
+
+
+📊 SYSTEM FEATURES
+================================================================================
+
+Admin Features:
+    ✓ View dashboard with statistics
+    ✓ Manage animals (Add/Edit/Delete)
+    ✓ Manage feeding schedules
+    ✓ Track animal health records
+    ✓ Manage enclosures
+    ✓ Manage staff accounts
+    ✓ Assign tasks to staff
+
+Staff Features:
+    ✓ View assigned tasks
+    ✓ View animal records
+    ✓ Manage feeding schedules
+    ✓ Update health records
+
+
+📞 NEED HELP?
+================================================================================
+
+If you're still having issues:
+
+1. Check that MySQL is running (open MySQL Workbench)
+2. Verify all 10 files are in the same folder
+3. Make sure the database was created (check MySQL Workbench)
+4. Confirm your MySQL password is correct in common.py
+5. Try restarting your computer
+6. Make sure Python 3.6+ is installed
