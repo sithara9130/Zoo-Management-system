@@ -70,10 +70,7 @@ class LoginPage:
         # Enter key binding
         self.root.bind('<Return>', lambda e: self.login())
         
-        # Default credentials hint
-        tk.Label(frame, text="Default: admin / admin123", 
-                font=("Arial", 9, "italic"), 
-                bg="#2c3e50", fg="#95a5a6").pack(pady=10)
+
     
     def center_window(self):
         """Center the window on screen"""
